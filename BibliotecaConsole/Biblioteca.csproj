@@ -21,4 +21,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BibliotecaShared.Data\BibliotecaShared.Data.csproj" />
+    <ProjectReference Include="..\BibliotecaShared.Models\BibliotecaShared.Models.csproj" />
+  </ItemGroup>
+
 </Project>
