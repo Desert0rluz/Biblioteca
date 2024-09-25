@@ -13,7 +13,7 @@ public class DAL<T> where T : class
     {
         return context.Set<T>().ToList();
     }
-    public void add(T objeto)
+    public void Add(T objeto)
     {
         context.Set<T>().Add(objeto);
         context.SaveChanges();

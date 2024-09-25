@@ -77,7 +77,7 @@ public class MenuOwner
         Console.Write("Telefone: ");
         newOwner.PhoneNumber = Console.ReadLine();
 
-        ownerRepository.add(newOwner);
+        ownerRepository.Add(newOwner);
         Console.WriteLine("Dono adicionado com sucesso!");
     }
 

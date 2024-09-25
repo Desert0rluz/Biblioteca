@@ -83,7 +83,7 @@ public class MenuBooks
         Console.Write("Gênero: ");
         newBook.Genre = Console.ReadLine();
 
-        bookRepository.add(newBook);
+        bookRepository.Add(newBook);
         Console.WriteLine("Livro adicionado com sucesso!");
     }
 

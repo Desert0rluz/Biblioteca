@@ -77,7 +77,7 @@ public class MenuFriend
         Console.Write("Telefone: ");
         newFriend.PhoneNumber = Console.ReadLine();
 
-        friendRepository.add(newFriend);
+        friendRepository.Add(newFriend);
         Console.WriteLine("Amigo adicionado com sucesso!");
     }
 
