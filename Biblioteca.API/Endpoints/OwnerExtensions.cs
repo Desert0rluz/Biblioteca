@@ -12,7 +12,7 @@ public static class OwnerExtensions
         {
             var dal = new DAL<Owner>(new BibliotecaContext());
             return Results.Ok(dal.List());
-        });
+        }).WithTags("Owners");
 
         app.MapGet("/Owner/{name}", (string name) =>
         {
@@ -23,14 +23,14 @@ public static class OwnerExtensions
                 return Results.NotFound();
             }
             return Results.Ok(owner);
-        });
+        }).WithTags("Owners");
 
         app.MapPost("/Owner", ([FromBody] Owner newOwner) =>
         {
             var dal = new DAL<Owner>(new BibliotecaContext());
             dal.Add(newOwner);
             return Results.Created($"/Owner/{newOwner.OwnerId}", newOwner);
-        });
+        }).WithTags("Owners");
 
         app.MapPut("/Owner/{id}", ([FromServices] DAL<Owner> dal, int id, [FromBody] Owner updatedOwner) =>
         {
@@ -46,7 +46,7 @@ public static class OwnerExtensions
 
             dal.Update(existingOwner);
             return Results.Ok(existingOwner);
-        });
+        }).WithTags("Owners");
 
         app.MapDelete("/Owner/{id}", ([FromServices] DAL<Owner> dal, int id) =>
         {
@@ -57,6 +57,6 @@ public static class OwnerExtensions
             }
             dal.Delete(owner);
             return Results.NoContent();
-        });
+        }).WithTags("Owners");
     }
 }

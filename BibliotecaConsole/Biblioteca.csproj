@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Biblioteca.API\Biblioteca.API.csproj" />
     <ProjectReference Include="..\BibliotecaShared.Data\BibliotecaShared.Data.csproj" />
     <ProjectReference Include="..\BibliotecaShared.Models\BibliotecaShared.Models.csproj" />
   </ItemGroup>

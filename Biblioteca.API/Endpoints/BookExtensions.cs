@@ -12,7 +12,7 @@ public static class BookExtensions
         {
             var dal = new DAL<Book>(new BibliotecaContext());
             return Results.Ok(dal.List());
-        });
+        }).WithTags("Books");
 
         app.MapGet("/Book/{title}", (string title) =>
         {
@@ -23,7 +23,7 @@ public static class BookExtensions
                 return Results.NotFound();
             }
             return Results.Ok(livro);
-        });
+        }).WithTags("Books");
 
         app.MapDelete("/Book/{id}", ([FromServices] DAL<Book> dal, int id) =>
         {
@@ -34,14 +34,14 @@ public static class BookExtensions
             }
             dal.Delete(book);
             return Results.NoContent();
-        });
+        }).WithTags("Books");
 
         app.MapPost("/Book", ([FromBody] Book newBook) =>
         {
             var dal = new DAL<Book>(new BibliotecaContext());
             dal.Add(newBook);
             return Results.Ok();
-        });
+        }).WithTags("Books");
 
         app.MapPut("/Book/{id}", ([FromServices] DAL<Book> dal, int id, [FromBody] Book updatedBook) =>
         {
@@ -55,11 +55,11 @@ public static class BookExtensions
             existingBook.Author = updatedBook.Author ?? existingBook.Author;
             existingBook.ISBN = updatedBook.ISBN ?? existingBook.ISBN;
             existingBook.PublishedYear = updatedBook.PublishedYear != 0 ? updatedBook.PublishedYear : existingBook.PublishedYear;
-            existingBook.Genre = updatedBook.Genre ?? existingBook.Genre;
+            existingBook.Genders = updatedBook.Genders ?? existingBook.Genders;
 
             dal.Update(existingBook);
             return Results.Ok(existingBook);
-        });
+        }).WithTags("Books");
 
     }
 }

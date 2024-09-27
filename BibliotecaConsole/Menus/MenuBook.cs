@@ -1,11 +1,13 @@
 ﻿using Models;
 using Data;
+using BibliotecaShared.Models.Models;
 
 namespace Menus;
 
 public class MenuBooks
 {
     private readonly DAL<Book> bookRepository;
+    private readonly DAL<Gender> genderRepository;
 
     public MenuBooks(BibliotecaContext context)
     {
@@ -80,11 +82,22 @@ public class MenuBooks
         Console.Write("Ano de Publicação: ");
         newBook.PublishedYear = int.Parse(Console.ReadLine());
 
-        Console.Write("Gênero: ");
-        newBook.Genre = Console.ReadLine();
+        Console.WriteLine("Selecione o gênero pelo ID ou Nome (deixe em branco para não adicionar gênero): ");
+        string genreInput = Console.ReadLine();
 
-        bookRepository.Add(newBook);
-        Console.WriteLine("Livro adicionado com sucesso!");
+        if (!string.IsNullOrEmpty(genreInput))
+        {
+            var selectedGender = genderRepository.GetBy(g => g.Name.ToLower() == genreInput.ToLower() || g.GenderId.ToString() == genreInput);
+
+            if (selectedGender != null)
+            {
+                newBook.Genders = new List<Gender> { selectedGender };
+            }
+            else
+            {
+                Console.WriteLine("Gênero não encontrado. O livro será adicionado sem um gênero associado.");
+            }
+        }
     }
 
     private void ListBooks()
@@ -104,7 +117,7 @@ public class MenuBooks
             Console.WriteLine($"Autor: {book.Author}");
             Console.WriteLine($"ISBN: {book.ISBN}");
             Console.WriteLine($"Ano de Publicação: {book.PublishedYear}");
-            Console.WriteLine($"Gênero: {book.Genre}");
+            Console.WriteLine($"Gênero: {book.Genders}");
             Console.WriteLine(new string('-', 20));
         }
     }
@@ -139,8 +152,20 @@ public class MenuBooks
         if (!string.IsNullOrEmpty(yearInput)) bookToUpdate.PublishedYear = int.Parse(yearInput);
 
         Console.Write("Novo Gênero (deixe em branco para manter o atual): ");
-        string genre = Console.ReadLine();
-        if (!string.IsNullOrEmpty(genre)) bookToUpdate.Genre = genre;
+        string genreInput = Console.ReadLine();
+        if (!string.IsNullOrEmpty(genreInput))
+        {
+            var selectedGender = genderRepository.GetBy(g => g.Name.ToLower() == genreInput.ToLower() || g.GenderId.ToString() == genreInput);
+            if (selectedGender != null)
+            {
+                bookToUpdate.Genders.Clear();
+                bookToUpdate.Genders.Add(selectedGender);
+            }
+            else
+            {
+                Console.WriteLine("Gênero não encontrado.");
+            }
+        }
 
         bookRepository.Update(bookToUpdate);
         Console.WriteLine("Livro atualizado com sucesso!");

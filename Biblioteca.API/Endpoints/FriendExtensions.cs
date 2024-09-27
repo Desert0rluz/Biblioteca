@@ -12,7 +12,7 @@ public static class FriendExtensions
         {
             var dal = new DAL<Friend>(new BibliotecaContext());
             return Results.Ok(dal.List());
-        });
+        }).WithTags("Friends");
 
         app.MapGet("/Friend/{name}", (string name) =>
         {
@@ -23,14 +23,14 @@ public static class FriendExtensions
                 return Results.NotFound();
             }
             return Results.Ok(friend);
-        });
+        }).WithTags("Friends");
 
         app.MapPost("/Friend", ([FromBody] Friend newFriend) =>
         {
             var dal = new DAL<Friend>(new BibliotecaContext());
             dal.Add(newFriend);
             return Results.Created($"/Friend/{newFriend.FriendId}", newFriend);
-        });
+        }).WithTags("Friends");
 
         app.MapPut("/Friend/{id}", ([FromServices] DAL<Friend> dal, int id, [FromBody] Friend updatedFriend) =>
         {
@@ -46,7 +46,7 @@ public static class FriendExtensions
 
             dal.Update(existingFriend);
             return Results.Ok(existingFriend);
-        });
+        }).WithTags("Friends");
 
         app.MapDelete("/Friend/{id}", ([FromServices] DAL<Friend> dal, int id) =>
         {
@@ -57,6 +57,6 @@ public static class FriendExtensions
             }
             dal.Delete(friend);
             return Results.NoContent();
-        });
+        }).WithTags("Friends");
     }
 }

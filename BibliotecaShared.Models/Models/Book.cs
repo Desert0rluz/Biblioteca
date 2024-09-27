@@ -1,4 +1,6 @@
-﻿namespace Models;
+﻿using BibliotecaShared.Models.Models;
+
+namespace Models;
 public class Book
 {
     public int Id { get; set; }
@@ -6,6 +8,6 @@ public class Book
     public string Author { get; set; } 
     public string ISBN { get; set; }  
     public int PublishedYear { get; set; } 
-    public string Genre { get; set; }  
+    public virtual ICollection<Gender> Genders { get; set; }  
     public Book() { }
 }
