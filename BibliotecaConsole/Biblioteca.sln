@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliotecaShared.Data", "..
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliotecaShared.Models", "..\BibliotecaShared.Models\BibliotecaShared.Models.csproj", "{E59C319D-5717-41EE-9EC2-13631E78ABE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca.API", "..\Biblioteca.API\Biblioteca.API.csproj", "{7B7F9EA0-4BB9-4414-B9B9-A30B2D859538}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca.API", "..\Biblioteca.API\Biblioteca.API.csproj", "{7B7F9EA0-4BB9-4414-B9B9-A30B2D859538}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca.Web", "..\Biblioteca.Web\Biblioteca.Web.csproj", "{B580BB78-605E-4D99-B4BF-C0C4CA48EBFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{7B7F9EA0-4BB9-4414-B9B9-A30B2D859538}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B7F9EA0-4BB9-4414-B9B9-A30B2D859538}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B7F9EA0-4BB9-4414-B9B9-A30B2D859538}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B580BB78-605E-4D99-B4BF-C0C4CA48EBFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B580BB78-605E-4D99-B4BF-C0C4CA48EBFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B580BB78-605E-4D99-B4BF-C0C4CA48EBFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B580BB78-605E-4D99-B4BF-C0C4CA48EBFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
